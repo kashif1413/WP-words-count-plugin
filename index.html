@@ -1,258 +1,257 @@
-
 <style>
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #f7f7f7;
-    color: #222;
-    padding: 20px;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-
-  button {
-    background: #ffffff;
-    color: #222;
-    border: 1px solid #ccc;
-    padding: 8px 10px;
-    margin: 5px;
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-  }
-  button:hover:not(:disabled) {
-    background: #eaeaea;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-  }
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .main {
-    display: flex;
-    gap: 20px;
-  }
-  .left {
-    width: 100px;
-    flex: 1;
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  }
-  .right {
-    flex: 2;
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-  }
-  .btn-row {
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    font-size: 14px;
-  }
-  
-  th {
-    background: #eee;
-  }
-  tr:nth-child(even) td {
-    background: #fafafa;
-  }
-th, td {
-  padding: 8px 8px;   /* less vertical padding */
-  text-align: left;
-  line-height: 1.2;   /* tighter line height */
+.tm-word-counter {
+  font-family: 'Poppins', sans-serif;
+  background: #f7f7f7;
+  color: #222;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.tm-word-counter h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
-  textarea {
-    box-sizing: border-box;
-    min-height: 400px;
-    width: 100%;
-    height: 400px;
-    padding: 10px;
-    font-family: poppins, sans-serif;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    resize: vertical;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-    background: #fefefe;
-    color: #222;
-    display: block;
-  }
+.tm-word-counter button {
+  background: #ffffff;
+  color: #222;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  margin: 5px;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+.tm-word-counter button:hover:not(:disabled) {
+  background: #eaeaea;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+.tm-word-counter button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
-  /* Mobile: swap order (textarea on top, results below) */
-  @media(max-width: 768px) {
-    .main {
-      flex-direction: column-reverse; /* ✅ swap order */
-    }
-    .left, .right {
-      width: 100%;
-    }
+.tm-word-counter .main {
+  display: flex;
+  gap: 20px;
+}
+.tm-word-counter .left {
+  flex: 1;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.tm-word-counter .right {
+  flex: 2;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+.tm-word-counter .btn-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tm-word-counter table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.tm-word-counter th {
+  background: #eee;
+}
+.tm-word-counter tr:nth-child(even) td {
+  background: #fafafa;
+}
+.tm-word-counter th,
+.tm-word-counter td {
+  padding: 6px 8px;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.tm-word-counter textarea {
+  box-sizing: border-box;
+  min-height: 400px;
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  background: #fefefe;
+  color: #222;
+  display: block;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .tm-word-counter .main {
+    flex-direction: column-reverse; /* textarea on top, table below */
   }
+  .tm-word-counter .left,
+  .tm-word-counter .right {
+    width: 100%;
+  }
+}
 </style>
 
-<!-- <h1>Word & Character Counter</h1> -->
-
-<div class="main">
-  <!-- LEFT: Results -->
-  <div class="left">
-    <div class="btn-row">
-      <button id="copyResults" title="Copy Results" disabled>📋</button>
-      <button id="downloadResults" title="Download Results" disabled>⬇️</button>
+<div class="tm-word-counter">
+  <div class="main">
+    <!-- LEFT: Results -->
+    <div class="left">
+      <div class="btn-row">
+        <button id="copyResults" title="Copy Results" aria-label="Copy Results" disabled>📋</button>
+        <button id="downloadResults" title="Download Results" aria-label="Download Results" disabled>⬇️</button>
+      </div>
+      <table>
+        <tr><th>Metric</th><th>Value</th></tr>
+        <tr><td>Words</td><td id="wordCount">0</td></tr>
+        <tr><td>Characters</td><td id="charCount">0</td></tr>
+        <tr><td>Characters (no spaces)</td><td id="charNoSpace">0</td></tr>
+        <tr><td>Sentences</td><td id="sentenceCount">0</td></tr>
+        <tr><td>Paragraphs</td><td id="paraCount">0</td></tr>
+        <tr><td>Total Lines</td><td id="lineCount">0</td></tr>
+      </table>
     </div>
-    <table>
-      <tr><th>Metric</th><th>Value</th></tr>
-      <tr><td>Words</td><td id="wordCount">0</td></tr>
-      <tr><td>Characters</td><td id="charCount">0</td></tr>
-      <tr><td>Characters (no spaces)</td><td id="charNoSpace">0</td></tr>
-      <tr><td>Sentences</td><td id="sentenceCount">0</td></tr>
-      <tr><td>Paragraphs</td><td id="paraCount">0</td></tr>
-      <tr><td>Total Lines</td><td id="lineCount">0</td></tr>
-    </table>
-  </div>
 
-  <!-- RIGHT: Textarea -->
-  <div class="right">
-    <div class="btn-row">
-      <button id="chooseFileBtn" title="Choose Text File">📂</button>
-      <button id="copyText" title="Copy Text" disabled>📋</button>
-      <button id="clearText" title="Clear Text" disabled>❌</button>
-      <button id="downloadText" title="Download Text" disabled>⬇️</button>
-      <input type="file" id="fileInput" accept=".txt" style="display:none">
+    <!-- RIGHT: Textarea -->
+    <div class="right">
+      <div class="btn-row">
+        <button id="chooseFileBtn" title="Choose Text File" aria-label="Choose File">📂</button>
+        <button id="copyText" title="Copy Text" aria-label="Copy Text" disabled>📋</button>
+        <button id="clearText" title="Clear Text" aria-label="Clear Text" disabled>❌</button>
+        <button id="downloadText" title="Download Text" aria-label="Download Text" disabled>⬇️</button>
+        <input type="file" id="fileInput" accept=".txt" style="display:none">
+      </div>
+      <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
     </div>
-    <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
   </div>
 </div>
 
 <script>
-  const textInput = document.getElementById('textInput');
-  const wordCount = document.getElementById('wordCount');
-  const charCount = document.getElementById('charCount');
-  const charNoSpace = document.getElementById('charNoSpace');
-  const sentenceCount = document.getElementById('sentenceCount');
-  const paraCount = document.getElementById('paraCount');
-  const lineCount = document.getElementById('lineCount');
-  const fileInput = document.getElementById('fileInput');
+const textInput = document.getElementById('textInput');
+const wordCount = document.getElementById('wordCount');
+const charCount = document.getElementById('charCount');
+const charNoSpace = document.getElementById('charNoSpace');
+const sentenceCount = document.getElementById('sentenceCount');
+const paraCount = document.getElementById('paraCount');
+const lineCount = document.getElementById('lineCount');
+const fileInput = document.getElementById('fileInput');
 
-  const btnCopyText = document.getElementById('copyText');
-  const btnClearText = document.getElementById('clearText');
-  const btnDownloadText = document.getElementById('downloadText');
-  const btnCopyResults = document.getElementById('copyResults');
-  const btnDownloadResults = document.getElementById('downloadResults');
+const btnCopyText = document.getElementById('copyText');
+const btnClearText = document.getElementById('clearText');
+const btnDownloadText = document.getElementById('downloadText');
+const btnCopyResults = document.getElementById('copyResults');
+const btnDownloadResults = document.getElementById('downloadResults');
 
-  // ✅ Enable/disable buttons based on textarea content
-  function updateButtonStates() {
-    const hasText = textInput.value.trim().length > 0;
-    btnCopyText.disabled = !hasText;
-    btnClearText.disabled = !hasText;
-    btnDownloadText.disabled = !hasText;
-    btnCopyResults.disabled = !hasText;
-    btnDownloadResults.disabled = !hasText;
+// enable/disable buttons
+function updateButtonStates() {
+  const hasText = textInput.value.trim().length > 0;
+  btnCopyText.disabled = !hasText;
+  btnClearText.disabled = !hasText;
+  btnDownloadText.disabled = !hasText;
+  btnCopyResults.disabled = !hasText;
+  btnDownloadResults.disabled = !hasText;
+}
+
+// stats update
+function updateStats() {
+  const text = textInput.value;
+  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+  const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
+  const lines = text.split(/\n/);
+
+  wordCount.textContent = words.length;
+  charCount.textContent = text.length;
+  charNoSpace.textContent = text.replace(/\s/g, '').length;
+  sentenceCount.textContent = sentences.length;
+  paraCount.textContent = paragraphs.length;
+  lineCount.textContent = lines.length;
+
+  updateButtonStates();
+}
+textInput.addEventListener('input', updateStats);
+
+// choose file
+document.getElementById('chooseFileBtn').addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      textInput.value = e.target.result;
+      updateStats();
+    };
+    reader.readAsText(file);
   }
+});
 
-  // File picker
-  document.getElementById('chooseFileBtn').addEventListener('click', () => fileInput.click());
-  fileInput.addEventListener('change', () => {
-    const file = fileInput.files[0];
-    if(file) {
-      const reader = new FileReader();
-      reader.onload = e => {
-        textInput.value = e.target.result;
-        updateStats();
-      };
-      reader.readAsText(file);
-    }
-  });
+// copy text
+btnCopyText.addEventListener('click', () => {
+  navigator.clipboard.writeText(textInput.value);
+  alert('Text copied!');
+});
 
-  // Count function
-  function updateStats() {
-    const text = textInput.value;
-    const words = text.trim().split(/\s+/).filter(w => w.length > 0);
-    const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
-    const paragraphs = text.split(/\n+/).filter(p => p.trim().length > 0);
-    const lines = text.split(/\n/);
-
-    wordCount.textContent = words.length;
-    charCount.textContent = text.length;
-    charNoSpace.textContent = text.replace(/\s/g, '').length;
-    sentenceCount.textContent = sentences.length;
-    paraCount.textContent = paragraphs.length;
-    lineCount.textContent = lines.length;
-
-    updateButtonStates();
-  }
-  textInput.addEventListener('input', updateStats);
-
-  // Copy text
-  btnCopyText.addEventListener('click', () => {
-    navigator.clipboard.writeText(textInput.value);
-    alert('Text copied!');
-  });
-
-  // Clear text
-  btnClearText.addEventListener('click', () => {
-    textInput.value = '';
-    updateStats();
-  });
-
-  // Download text
-  btnDownloadText.addEventListener('click', () => {
-    downloadFile(textInput.value, "ToolsMenia.site Word Counter Text.txt");
-  });
-
-  // Copy results
-  btnCopyResults.addEventListener('click', () => {
-    const results =
-      `Words: ${wordCount.textContent}\n`+
-      `Characters: ${charCount.textContent}\n`+
-      `Characters (no spaces): ${charNoSpace.textContent}\n`+
-      `Sentences: ${sentenceCount.textContent}\n`+
-      `Paragraphs: ${paraCount.textContent}\n`+
-      `Total Lines: ${lineCount.textContent}`;
-    navigator.clipboard.writeText(results);
-    alert('Results copied!');
-  });
-
-  // Download results
-  btnDownloadResults.addEventListener('click', () => {
-    const results =
-      `Words: ${wordCount.textContent}\n`+
-      `Characters: ${charCount.textContent}\n`+
-      `Characters (no spaces): ${charNoSpace.textContent}\n`+
-      `Sentences: ${sentenceCount.textContent}\n`+
-      `Paragraphs: ${paraCount.textContent}\n`+
-      `Total Lines: ${lineCount.textContent}`;
-    downloadFile(results, "ToolsMenia.site Word Counter Results.txt");
-  });
-
-  // Helper to download
-  function downloadFile(content, filename) {
-    const blob = new Blob([content], {type: 'text/plain'});
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    link.click();
-    URL.revokeObjectURL(link.href);
-  }
-
-  // Initialize states on load
+// clear text
+btnClearText.addEventListener('click', () => {
+  textInput.value = '';
   updateStats();
+});
+
+// download text
+btnDownloadText.addEventListener('click', () => {
+  downloadFile(textInput.value, "ToolsMenia.site Word Counter Text.txt");
+});
+
+// copy results
+btnCopyResults.addEventListener('click', () => {
+  const results =
+    `Words: ${wordCount.textContent}\n`+
+    `Characters: ${charCount.textContent}\n`+
+    `Characters (no spaces): ${charNoSpace.textContent}\n`+
+    `Sentences: ${sentenceCount.textContent}\n`+
+    `Paragraphs: ${paraCount.textContent}\n`+
+    `Total Lines: ${lineCount.textContent}`;
+  navigator.clipboard.writeText(results);
+  alert('Results copied!');
+});
+
+// download results
+btnDownloadResults.addEventListener('click', () => {
+  const results =
+    `Words: ${wordCount.textContent}\n`+
+    `Characters: ${charCount.textContent}\n`+
+    `Characters (no spaces): ${charNoSpace.textContent}\n`+
+    `Sentences: ${sentenceCount.textContent}\n`+
+    `Paragraphs: ${paraCount.textContent}\n`+
+    `Total Lines: ${lineCount.textContent}`;
+  downloadFile(results, "ToolsMenia.site Word Counter Results.txt");
+});
+
+// helper to download
+function downloadFile(content, filename) {
+  const blob = new Blob([content], {type: 'text/plain'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+// init
+updateStats();
 </script>
