@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: ToolsMenia's Words Count Tool
-Plugin URI:  https://github.com/kashif1413/WP-text-case-converter-plugin
+Plugin URI:  https://github.com/kashif1413/WP-words-count-plugin
 Description: A simple case converter tool.
-Version: 1.3
+Version: 1
 Author: Kashif Ajmal
 Author URI: https://github.com/kashif1413
-GitHub Plugin URI: kashif1413/WP-text-case-converter-plugin
+GitHub Plugin URI: kashif1413/WP-words-count-plugin
 Primary Branch: main
 */
 
