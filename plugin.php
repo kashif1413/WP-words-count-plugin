@@ -3,7 +3,7 @@
 Plugin Name: ToolsMenia's Words Count Tool
 Plugin URI:  https://github.com/kashif1413/WP-words-count-plugin
 Description: A simple words/characters counting tool.
-Version: 1.0
+Version: 1.1
 Author: Kashif Ajmal
 Author URI: https://github.com/kashif1413
 GitHub Plugin URI: kashif1413/WP-words-count-plugin
